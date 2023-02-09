@@ -1,0 +1,6 @@
+CREATE FUNCTION tf1 (integer, numeric) RETURNS numeric AS $$
+    UPDATE bank
+        SET balance = balance - $2
+        WHERE accountno = $1;
+    SELECT balance FROM bank WHERE accountno = $1;
+$$ LANGUAGE SQL;
